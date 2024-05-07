@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+<body>
+   
+<div class="muscle-container">
+    {% for b, image_url in bodyparts["Muscles"].items() %} 
+    <div class="muscle-item">
+        <img class="muscle-image" src="{{image_url}}" alt="{{b}}">
+        <p class="muscle-text">{{b}}</p>
+        <a href="{{url_for('workout_views.workouts_page', value=b)}}"><button class="muscle-btn">View Workouts</button></a>
+    </div>
+    {% endfor %}
+</div>
+
+
+</body>
+{% endblock %}

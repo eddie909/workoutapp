@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Get icons from google-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/static/styles.css">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <title>{% block title %} {% endblock %} </title>
+</head>
+
+<body>
+    
+    <header>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="/home" class="{{'active' if request.path=='/home'}}">Home</a></li>
+                <li><a href="/routines" class="{{'active' if request.path=='/routines'}}">Routines</a></li>
+                <li><a href="/account"><i class="material-icons">account_circle</i></a></li>
+                <li>{% block page %} {% endblock %}</li>
+                <li><a href="/logout"><i class="material-icons">logout</i></a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+    {% block content %} 
+    <!--Child templates info here-->
+    {% endblock %}
+</div>
+    
+
+<script type="text/javascript" src="js/materialize.min.js"></script>   
+</body>
+<footer>
+    <p>&copy;M.E</p>
+</footer>
+</html>

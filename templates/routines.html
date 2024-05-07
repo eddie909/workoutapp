@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+{% block title %}Routines{% endblock %}
+
+
+
+
+{% block content %} 
+<div class="routine-container">
+<table class="center">       
+    <thead>
+        <tr>
+            <th>Routine</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+         {% for r in all_routines %}
+         <tr>
+         <td>{{r.name}} 
+         <div class="routines-list">
+        <input type="hidden" name="id" value="{{r.id}}">
+           <a href="{{url_for('userworkout_views.user_workouts_page', value=r.id)}}"> 
+            <button type="submit">View Workouts</button>
+        </a>
+        </div>
+        </td>
+        <td>
+            <div class="edit-delete-actions">
+            <form action="/editname" method="post">
+                <input type="text" name="new_name" placeholder="edit name">
+                <input type="hidden" name="name" value="{{r.name}}">
+                <button type="submit" title="edit">
+                    <i class="material-icons">edit</i>
+                </button>
+            </form>
+       
+            <form action="/deleteRoutine/{{r.id}}" method="post">
+                <input type="hidden" name="id" value="{{r.id}}">
+                <input type="hidden" name="name" value="{{r.name}}">
+                <button type="submit" title="delete">
+                    <i class="material-icons">remove</i>
+                </button>
+            </form>
+        </div>
+        </td>
+         </tr>
+    {% endfor %}
+    <tr>
+        <td colspan="2">
+        <div class="add-routine">
+            <form action="/create" method="post" autocomplete="off">
+                <input type="text" name="name" placeholder="Create new routine">
+             <span class="add-button"><button type="submit" title="Add"><i class="material-icons">add</i></button></span>
+            </form>
+        </div>
+        </td>
+
+    </tr>
+     </tbody>
+</table>
+     
+
+        
+</div>
+
+
+{% endblock %}

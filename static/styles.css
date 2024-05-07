@@ -1,0 +1,328 @@
+:root{
+    --c-one: #2A2438;
+    --c-two: #5C5470;
+    --c-three: #352F44;
+    --c-four: #DBD8E3;
+}
+
+/* CSS for Layout */
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family:sans-serif,Arial;
+    background:linear-gradient(90deg, var(--c-one) 0%, var(--c-two) 100%);
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* .container{
+    margin: 0 60px;
+    box-sizing: border-box;
+} */
+
+
+.navbar {
+    background-color: var(--c-one);
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 0 20px; */
+    margin-bottom: 10px;
+    position: relative; /* need for position absolute in .nav-links */
+    border-bottom:var(--c-four) 2px solid;
+}
+
+.nav-links {
+
+    font-size: 20px;
+    font-weight: bold;
+    color:var(--c-four);
+}
+
+.nav-links li:nth-child(3){
+  
+    position: absolute;
+    right: 5%;
+    height: 30px;
+    color: var(--c-four);
+}
+
+.nav-links li:nth-child(5){
+    position: absolute;
+    right: 10%;
+    height: 30px;
+    color: var(--c-four);
+}
+.nav-links li:nth-child(3):hover{
+    cursor: pointer;
+    clip-path: circle(50%);
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin-right: 10px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.navbar ul li a:hover {
+    background-color: var(--c-two);
+    color: var(--c-four);
+}
+
+.navbar ul li a.active {
+    text-decoration: underline;
+    color: var(--c-four)
+}
+
+
+footer{
+    background-color: var(--c-four);
+    color: var(--c-one);
+    text-align: left;
+    padding: 10px;
+    margin-top: auto;
+    width: 100%;
+}
+
+
+/* HOME PAGE */
+
+.muscle-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px 20px;
+}
+.muscle-item {
+    flex-basis: calc(33.33% - 10px);
+    margin-bottom: 20px; 
+    text-align: center;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 32px rgba(0, 0, 0, 0.1); 
+    background-color: var(--c-four)
+}
+
+.muscle-item:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.muscle-image{
+    width: 95%; 
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0%;
+    mix-blend-mode: darken;
+}
+
+.muscle-text{
+    font-size: medium;
+    font-weight: bold;   
+    text-transform: uppercase;
+    text-decoration: solid;
+}
+
+.muscle-btn{
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: var(--c-two);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+.muscle-btn:hover{
+    transition: transform 0.3s ease;
+    transform: scale(1.05); 
+    cursor: pointer;
+}
+
+/* WORKOUTS PAGE */
+
+.workout-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 20px;
+}
+
+.workout-container button{
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.workout-container button:hover{
+    transition: transform 0.3s ease;
+    transform: scale(1.05); 
+    cursor: pointer;
+}
+
+.workout-card{
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 10px;
+    background-color:var(--c-four);
+    display: flex;
+    align-items: center;
+    color: var(--c-three);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+.workout-card .gif {
+    flex-basis: 50%;
+    margin-right: 40px;
+    mix-blend-mode: darken;
+}
+
+.workout-card .details {
+    flex-basis: 50%;
+    text-decoration: solid;
+    margin-bottom: 10px;
+}
+
+.workout-container ul{
+    list-style-type: none;
+}
+
+
+/* ROUTINES PAGE */
+
+.routine-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 20px;
+    height: auto;
+    width: 50%;
+    margin: 0 auto;
+    left: 50%;
+    background-color: var(--c-four);
+    border-radius: 10px;  
+    box-shadow:  0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 32px rgba(0, 0, 0, 0.1); 
+}
+
+.routine-container button:hover{
+    cursor: pointer;
+}
+
+.routine-container table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.routine-container th{
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+.routine-container td{
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid var(--c-three);
+}
+
+.routine-container button{
+    margin: 5px;
+    float: left;
+    display: inline;
+}
+
+.routine-container input{
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--c-three);
+    width: 50%;
+    float: left;
+}
+
+.routines-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-routine{
+    margin: 5px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+
+select{
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--c-three);
+    background-color: var(--c-four);
+}
+
+option:nth-child(even){
+    background-color: var(--c-four);
+}
+option:nth-child(odd){
+    background-color: var(--c-three);
+}
+
+
+
+/* ACCOUNTS PAGE  */
+.account-container{
+    display: block;
+    justify-content: space-between;
+    position: relative;
+    padding: 20px;
+    margin: 0 20px;
+    height: 400px;
+    width: 50%;
+    margin: 0 auto;
+   
+    border-radius: 10px;  
+    text-align: center;
+    border-style: solid;
+    box-shadow:  0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 32px rgba(0, 0, 0, 0.1); 
+}
+
+.account-container::before{
+    position: absolute;
+    width:100%;
+    height:100%;
+    content: '';
+    top: 0;
+    left: 0;
+    background-image: url('/static/image/login.jpg');
+    opacity: 0.3;
+    background-size: cover;
+    z-index: -1;
+}
+
+.account-container p{
+    font-weight: bold;
+    color: var(--c-four);
+}
+.account-container h1{
+    margin: 20px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    opacity: 1;
+}
+
+.account-container .caps{
+    text-transform: capitalize;
+    margin: 20px;
+}
+

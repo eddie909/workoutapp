@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    {% block content %}
+     <style>
+        :root{
+            --c-one: #2A2438;
+            --c-two: #5C5470;
+            --c-three: #352F44;
+            --c-four: #DBD8E3;
+        }
+
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;   
+            height: 100vh;      
+        }
+       
+        .background{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/static/image/login.jpg');
+            background-size: cover; 
+            filter: blur(3px);
+            z-index: -1;
+        }
+
+        .container{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            height: 400px;
+            background: #fff;
+            border-right: var(--c-four);
+            border-left: var(--c-one);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .container h1{
+            text-align: center;
+            padding: 50px 0 10px 0; /* top right bottom left */
+            color: black;
+            font-size: 36px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .logo{
+            width: 50px;
+            height: 50px;
+            margin-left: 1px;
+            transform: rotate(25deg);
+        }
+        .container .right{
+            float: right;
+            width: 50%;
+            height: 100%;
+            background: url('/static/image/login.jpg') ;
+            background-size: cover;
+            box-sizing: border-box;
+            background-repeat: no-repeat;
+            background-position: right;
+        }
+
+        .container .left{
+            float: left;
+            width: 50%;
+            height: 100%;
+            box-sizing: border-box;
+            background: linear-gradient(90deg, #2A2438, #5C5470);
+            border-color: var(--c-one);
+        }
+
+        .formbox{
+            width: 100%;
+            padding: 10px 40px;
+            box-sizing: border-box;
+            height: calc(100% - 160px);
+        }
+
+        form .text-field{
+            position: relative;
+            border-bottom: 2px solid var(--c-two);
+            margin: 20px 0;      
+        }
+
+        .text-field input{
+            width: 100%;
+            padding: 0 5px;
+            height: 40px;
+            font-size: 16px;
+            border: none;
+            background: none !important;
+            outline: none;
+        }
+
+
+
+        .text-field label{
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            color: black;
+            transform: translateY(-50%);
+            font-size: 16px;
+            pointer-events: none;
+            transition: .5s;
+        }
+
+        .text-field span::before{
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--c-two);
+        }
+        .text-field input:focus ~ label,
+        .text-field input:valid ~ label{
+            top: -5px;
+            color: var(--c-two);
+        }
+
+        .text-field input:focus ~ span::before,
+        .text-field input:valid ~ span::before{
+            background: var(--c-one);
+            width: 100%;
+        }
+
+        .forgot-password{
+            color: black;
+            margin: 10px 0;
+            text-align: right;
+            font-size: 14px;
+            transition: .5s;
+        }
+        .forgot-password:hover{
+            color: var(--c-two);
+            cursor: pointer;
+        }
+
+        .login-form-btn button{
+            width: 100%;
+            height: 40px;
+            border: none;
+            background: var(--c-three);
+            color: var(--c-four);
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            margin: 10px 0;
+            transition: .5s;
+            border-radius: 10px;
+        }
+
+        .login-form-btn button:hover{
+            background: var(--c-two);
+        }
+
+        .signup-link{
+            text-align: center;
+            margin: 10px 0;
+            color: black;
+        }
+
+        .signup-link a{
+            color: var(--c-four);
+        }
+
+        .signup-link a:hover{
+            color: var(--c-two);
+        } 
+
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <div class="left">
+        <h1>Login <img class="logo" src="/static/image/logo.png" ></h1>
+        <div class="formbox">
+        <form action="/login" method="post" autocomplete="off">
+     
+            <div class="text-field">
+                <input type="text" id="username" name="username" required>
+                <span></span>
+                <label for="username">Username</label> 
+            </div>
+            <div class="text-field">
+                <input type="password" id="password" name="password" required>
+                <span></span>
+                <label for="password">Password</label>
+            </div>
+            <div class="forgot-password">Forgot password?</div>
+          <div class="login-form-btn">
+                <button type="submit">Login</button>
+            </div>
+        <div class="signup-link">
+            Don't have an account? <a href="/signup">Sign up</a>
+        </div>
+    </form>
+</div>
+    </div>
+    <div class="right"></div>
+</div>
+    
+
+</body>
+</html>
+   
+  {% endblock %} 

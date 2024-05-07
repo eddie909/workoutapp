@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block title %} Workouts {% endblock %}
+{% block page %}{{value}}{% endblock %}
+
+
+
+{% block content %} 
+
+<div class="workout-container">
+<ul>
+    {% for w in all_workouts %}
+    <div class="workout-card">
+        <p><img class="gif" src="{{w.gif}}"></p>
+    <li class="details">
+        <p>Name: {{w.name}}</p>
+        <p>Equipment: {{w.equipment}}</p>
+        <p>Target: {{w.target}}</p>
+        {% if w.secondaryMuscles == None %}
+    {% else %} 
+        <p>Secondary:
+        {% for s in w.secondaryMuscles %}
+            {{s}}
+        {% endfor %}
+        </p>
+    {% endif %}
+        <p>Instructions:
+    <ol>
+    {% for i in w.instructions %}
+       <li> {{i}} </li>
+       {% endfor %}
+    </ol>
+        </p>
+        {% if all_routines.name == None or all_routines|length==0 %}
+        <P><b>No routines exist</b> </P>
+        <p><a href="/routines"><button>Create Routine</button></a></p>
+        {% else %}
+        <form action="/addWorkout" method="post">
+            <button type="submit" name="workout_id" value="{{w.id}}">Add</button>
+            <select name="routine_id">
+                {% for r in all_routines %}
+                <option value="{{r.id}}">{{r.name}}</option>
+                {% endfor %}
+            </select>
+            <select name="day">
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+            {% endif %}
+        </form>
+    </div>
+    </li>
+    {% endfor %}
+</ul>
+</div>
+{% endblock %}

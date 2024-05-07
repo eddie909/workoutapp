@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %} Workouts {% endblock %}
+
+{% block page %}{{routineName}}{% endblock %}
+
+{% block content %}
+
+{% if workouts == None %}
+<p> No workouts in this routine </p>
+{% else %}
+
+<div class="workout-container">
+<ul>
+    {% for w in workouts %}
+    <div class="workout-card">
+      <li> <p><img class="gif" src="{{w.gif}}"></p>
+        <li class="details">
+            <p>Name:{{w.name}}</p>
+            <p>Equipment:{{w.equipment}}</p>
+            <p>Target:{{w.target}}</p>
+            {% if w.secondaryMuscles == None %}
+        {% else %} 
+            <p>Secondary:
+            {% for s in w.secondaryMuscles %}
+                {{s}}
+            {% endfor %}
+            </p>
+        {% endif %}
+            <p>Instructions:
+        <ol>
+        {% for i in w.instructions %}
+           <li> {{i}} </li>
+           {% endfor %}
+        </ol>
+            </p>
+            <form action="/deleteWorkout" method="post">
+                <button type="submit" name="workout_id" value="{{w.id}}" title="delete"><i class="material-icons">delete</i></button>
+                <input type="hidden" name="routine_id" value="{{routine.id}}">
+            </form>
+            <form action="/editday" method="post">
+                <select name="day">
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                </select>
+                <button type="submit" name="workout_id" value="{{w.id}}">Change Day</button>
+                <input type="hidden" name="routine_id" value="{{routine.id}}">
+            </form>
+            <p>Day: {{w.day}} </p>
+        </div>
+    </li>
+    
+    {% endfor %}
+    {% endif %}
+</ul>
+</div>
+{% endblock %}
